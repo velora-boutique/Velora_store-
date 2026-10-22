@@ -1,10 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VELORA | فيلورا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --pink: #f9edf2;
@@ -17,7 +19,7 @@ body {
   margin: 0;
   background: #fffafc;
   color: var(--ink);
-  font-family: Arial, sans-serif;
+  font-family: "Tajawal", Tahoma, Arial, sans-serif;
 }
 header {
   padding: 25px 18px;
@@ -25,12 +27,7 @@ header {
   background: var(--pink);
   border-bottom: 1px solid #ead9e1;
 }
-.logo {
-  font-size: 32px;
-  letter-spacing: 5px;
-  color: var(--rose);
-  font-weight: bold;
-}
+.logo { font-size: 32px; letter-spacing: 5px; color: var(--rose); font-weight: bold; }
 header p { margin: 10px 0 0; color: #765b6b; }
 main { max-width: 650px; margin: auto; padding: 20px 15px; }
 .hero {
@@ -41,12 +38,7 @@ main { max-width: 650px; margin: auto; padding: 20px 15px; }
 }
 h1 { font-size: 25px; line-height: 1.6; }
 .gold { color: #a78346; }
-.categories {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 8px;
-  margin: 20px 0;
-}
+.categories { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 20px 0; }
 .categories div {
   padding: 15px 4px;
   text-align: center;
@@ -70,8 +62,12 @@ input, textarea, select {
   border: 1px solid #e7d9e1;
   border-radius: 12px;
   font: inherit;
-  background: #f7f2ff;
+  background: #fdf7fa;
   color: #332632;
+}
+input:focus, textarea:focus, select:focus, button:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 2px;
 }
 textarea { min-height: 90px; resize: vertical; }
 small { display: block; color: #796875; line-height: 1.7; margin-top: 7px; }
@@ -83,10 +79,12 @@ button {
   border-radius: 13px;
   background: var(--rose);
   color: white;
+  font: inherit;
   font-size: 18px;
   font-weight: bold;
+  cursor: pointer;
 }
-button:disabled { opacity: .65; }
+button:disabled { opacity: .65; cursor: not-allowed; }
 .note {
   padding: 13px;
   background: #fff2f6;
@@ -103,18 +101,9 @@ button:disabled { opacity: .65; }
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
-#preview {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-}
-#preview img {
-  width: 85px;
-  height: 85px;
-  object-fit: cover;
-  border-radius: 10px;
-}
+#preview { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+#preview img { width: 85px; height: 85px; object-fit: cover; border-radius: 10px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 footer { text-align: center; padding: 25px; color: #816b78; font-size: 13px; }
 </style>
 </head>
@@ -128,7 +117,7 @@ footer { text-align: center; padding: 25px; color: #816b78; font-size: 13px; }
   <section class="hero">
     <h1>اختاري ما تحبين،<br><span class="gold">ونبحث لكِ عنه بكل أناقة</span></h1>
     <p>ملابس • إكسسوارات • أزياء رياضية</p>
-    <p>تقدري تطلبي منتج من الموقع أو تبعثيلنا صورته من هاتفك.</p>
+    <p>يمكنكِ طلب منتج من الموقع أو إرسال صورته من هاتفكِ.</p>
   </section>
 
   <div class="categories">
@@ -137,41 +126,47 @@ footer { text-align: center; padding: 25px; color: #816b78; font-size: 13px; }
     <div>🎀<br>رياضة</div>
   </div>
 
-  <h2>🛍️ اطلبي منتجك</h2>
+  <h2>🛍️ اطلبي منتجكِ</h2>
 
-  <form id="orderForm">
+  <form id="orderForm" novalidate>
     <label for="name">الاسم الكامل *</label>
-    <input id="name" name="name" autocomplete="name" required placeholder="اسمك الكامل">
+    <input id="name" name="name" autocomplete="name" required maxlength="100" placeholder="اسمكِ الكامل">
 
     <label for="phone">رقم الهاتف *</label>
-    <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="05 / 06 / 07">
+    <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" required
+           maxlength="10" pattern="0[567][0-9]{8}" placeholder="05 / 06 / 07 xx xx xx xx">
 
     <label for="wilaya">الولاية *</label>
-    <input id="wilaya" name="wilaya" required placeholder="مثال: ورقلة">
+    <input id="wilaya" name="wilaya" required maxlength="60" placeholder="مثال: ورقلة">
 
     <label for="city">البلدية *</label>
-    <input id="city" name="city" required placeholder="اسم البلدية">
+    <input id="city" name="city" required maxlength="60" placeholder="اسم البلدية">
 
     <label for="address">العنوان بالتفصيل *</label>
-    <textarea id="address" name="address" required placeholder="الحي، الشارع، وأي علامة قريبة"></textarea>
+    <textarea id="address" name="address" required maxlength="300" placeholder="الحي، الشارع، وأي علامة قريبة"></textarea>
 
-    <label for="product">اسم المنتج أو رابطه (اختياري)</label>
-    <input id="product" name="product" placeholder="اسم المنتج أو رابط الموقع">
+    <label for="product">اسم المنتج أو رابطه</label>
+    <input id="product" name="product" maxlength="500" placeholder="اسم المنتج أو رابط الموقع">
 
-    <label for="photos">صور المنتج 📸 *</label>
-    <input id="photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple required>
-    <small>من صورة إلى 5 صور. الحجم الإجمالي لا يتجاوز 5 ميغابايت.</small>
+    <label for="photos">صور المنتج 📸</label>
+    <input id="photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+    <small>أرسلي صورة واحدة إلى 5 صور، أو اكتبي اسم المنتج/رابطه أعلاه (واحد منهما على الأقل). يتم تصغير الصور تلقائياً قبل الإرسال.</small>
     <div id="preview"></div>
 
     <label for="details">المقاس، اللون والكمية</label>
-    <textarea id="details" name="details" placeholder="مثال: اللون الأسود، المقاس M، الكمية 1"></textarea>
+    <textarea id="details" name="details" maxlength="300" placeholder="مثال: اللون الأسود، المقاس M، الكمية 1"></textarea>
 
     <label for="payment">طريقة الدفع *</label>
     <select id="payment" name="payment" required>
       <option value="BaridiMob">بريدي موب (BaridiMob)</option>
     </select>
 
-    <div class="note">💳 تفاصيل التحويل والتأكيد النهائي للسعر يتم إرسالها بعد مراجعة الطلب والاتفاق مع الزبونة.</div>
+    <div class="hp" aria-hidden="true">
+      <label for="website">لا تملئي هذا الحقل</label>
+      <input id="website" name="website" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div class="note">💳 تفاصيل التحويل والتأكيد النهائي للسعر تُرسل بعد مراجعة الطلب والاتفاق معكِ.</div>
     <button id="submitBtn" type="submit">إرسال الطلب 💗</button>
     <div id="status" role="status" aria-live="polite"></div>
   </form>
@@ -182,15 +177,20 @@ footer { text-align: center; padding: 25px; color: #816b78; font-size: 13px; }
 <footer>VELORA © 2026 — أناقة على ذوقكِ</footer>
 
 <script>
-const FUNCTION_URL = https://mnwskymgjvuwaijvdqza.supabase.co/functions/v1/rapid-function";
+const FUNCTION_URL = "https://mnwskymgjvuwaijvdqza.supabase.co/functions/v1/rapid-function";
+
+const MAX_PHOTOS = 5;
+const MAX_RAW_SIZE = 20 * 1024 * 1024;
+const MAX_TOTAL_SIZE = 5 * 1024 * 1024;
+const MAX_DIMENSION = 1600;
+const ALLOWED = ["image/jpeg", "image/png", "image/webp"];
+const PHONE_RE = /^0[567][0-9]{8}$/;
 
 const form = document.getElementById("orderForm");
 const photoInput = document.getElementById("photos");
 const preview = document.getElementById("preview");
 const statusBox = document.getElementById("status");
 const submitBtn = document.getElementById("submitBtn");
-const MAX_TOTAL_SIZE = 5 * 1024 * 1024;
-const MAX_PHOTOS = 5;
 
 function showStatus(message, success = false) {
   statusBox.style.display = "block";
@@ -199,33 +199,56 @@ function showStatus(message, success = false) {
   statusBox.style.color = success ? "#176538" : "#a12626";
 }
 
+function validateFiles(files) {
+  if (files.length > MAX_PHOTOS) return "اختاري 5 صور كحد أقصى.";
+  if (files.some(f => !ALLOWED.includes(f.type))) return "اختاري صور JPG أو PNG أو WEBP فقط.";
+  if (files.some(f => f.size > MAX_RAW_SIZE)) return "حجم الصورة الواحدة كبير جداً (20 ميغابايت كحد أقصى).";
+  return "";
+}
+
+function compressImage(file) {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const scale = Math.min(1, MAX_DIMENSION / Math.max(img.width, img.height));
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      canvas.toBlob(blob => {
+        if (!blob) return reject(new Error("تعذر معالجة إحدى الصور."));
+        const base = file.name.replace(/\.[^.]+$/, "") || "photo";
+        resolve(new File([blob], base + ".jpg", { type: "image/jpeg" }));
+      }, "image/jpeg", 0.8);
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("تعذر قراءة إحدى الصور."));
+    };
+    img.src = url;
+  });
+}
+
 photoInput.addEventListener("change", () => {
   preview.replaceChildren();
   const files = [...photoInput.files];
-  const total = files.reduce((sum, file) => sum + file.size, 0);
-  const allowed = ["image/jpeg", "image/png", "image/webp"];
+  const error = validateFiles(files);
 
-  if (files.length > MAX_PHOTOS) {
+  if (error) {
     photoInput.value = "";
-    showStatus("اختاري 5 صور كحد أقصى.");
-    return;
-  }
-
-  if (files.some(file => !allowed.includes(file.type))) {
-    photoInput.value = "";
-    showStatus("اختاري صور JPG أو PNG أو WEBP فقط.");
-    return;
-  }
-
-  if (total > MAX_TOTAL_SIZE) {
-    photoInput.value = "";
-    showStatus("الحجم الإجمالي للصور لازم ما يفوتش 5 ميغابايت.");
+    showStatus(error);
     return;
   }
 
   files.forEach(file => {
     const img = document.createElement("img");
     img.alt = "معاينة صورة المنتج";
+    img.onload = () => URL.revokeObjectURL(img.src);
     img.src = URL.createObjectURL(file);
     preview.appendChild(img);
   });
@@ -235,23 +258,31 @@ photoInput.addEventListener("change", () => {
 
 form.addEventListener("submit", async event => {
   event.preventDefault();
+  if (submitBtn.disabled) return;
 
+  if (document.getElementById("website").value) return;
+
+  const val = id => document.getElementById(id).value.trim();
   const files = [...photoInput.files];
-  const total = files.reduce((sum, file) => sum + file.size, 0);
-  const allowed = ["image/jpeg", "image/png", "image/webp"];
 
-  if (!files.length || files.length > MAX_PHOTOS) {
-    showStatus("اختاري من صورة إلى 5 صور.");
+  if (!val("name") || !val("wilaya") || !val("city") || !val("address")) {
+    showStatus("يرجى ملء جميع الحقول المطلوبة (*).");
     return;
   }
 
-  if (files.some(file => !allowed.includes(file.type)) || total > MAX_TOTAL_SIZE) {
-    showStatus("تحققي من نوع الصور وحجمها الإجمالي (5 ميغابايت كحد أقصى).");
+  if (!PHONE_RE.test(val("phone"))) {
+    showStatus("رقم الهاتف غير صحيح. مثال: 0555123456");
     return;
   }
 
-  if (FUNCTION_URL.includes("PROJECT_ID")) {
-    showStatus("لازم تبدلي PROJECT_ID بمعرّف مشروع Supabase الحقيقي.");
+  if (!files.length && !val("product")) {
+    showStatus("أضيفي صورة للمنتج أو اكتبي اسمه/رابطه.");
+    return;
+  }
+
+  const fileError = validateFiles(files);
+  if (fileError) {
+    showStatus(fileError);
     return;
   }
 
@@ -259,22 +290,31 @@ form.addEventListener("submit", async event => {
   submitBtn.textContent = "جارٍ إرسال الطلب...";
   statusBox.style.display = "none";
 
-  try {
-    const data = new FormData();
-    data.append("name", document.getElementById("name").value.trim());
-    data.append("phone", document.getElementById("phone").value.trim());
-    data.append("wilaya", document.getElementById("wilaya").value.trim());
-    data.append("municipality", document.getElementById("city").value.trim());
-    data.append("address", document.getElementById("address").value.trim());
-    data.append("product", document.getElementById("product").value.trim());
-    data.append("details", document.getElementById("details").value.trim());
-    data.append("payment", document.getElementById("payment").value);
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 60000);
 
-    files.forEach(file => data.append("photos", file, file.name));
+  try {
+    const compressed = await Promise.all(files.map(compressImage));
+    const total = compressed.reduce((sum, f) => sum + f.size, 0);
+    if (total > MAX_TOTAL_SIZE) {
+      throw new Error("حجم الصور كبير جداً حتى بعد الضغط. قلّلي عدد الصور.");
+    }
+
+    const data = new FormData();
+    data.append("name", val("name"));
+    data.append("phone", val("phone"));
+    data.append("wilaya", val("wilaya"));
+    data.append("municipality", val("city"));
+    data.append("address", val("address"));
+    data.append("product", val("product"));
+    data.append("details", val("details"));
+    data.append("payment", document.getElementById("payment").value);
+    compressed.forEach(file => data.append("photos", file, file.name));
 
     const response = await fetch(FUNCTION_URL, {
       method: "POST",
-      body: data
+      body: data,
+      signal: controller.signal
     });
 
     const result = await response.json().catch(() => ({}));
@@ -283,14 +323,18 @@ form.addEventListener("submit", async event => {
       throw new Error(result.error || "تعذر إرسال الطلب.");
     }
 
-    showStatus("تم استلام طلبك بنجاح 💗 رقم الطلب: " + result.orderId, true);
+    showStatus("تم استلام طلبكِ بنجاح 💗" + (result.orderId ? " رقم الطلب: " + result.orderId : ""), true);
     form.reset();
     preview.replaceChildren();
 
   } catch (error) {
     console.error("Order submission error:", error);
-    showStatus("فشل الإرسال: " + (error.message || "حدث خطأ غير متوقع."));
+    const msg = error.name === "AbortError"
+      ? "انتهت مهلة الإرسال. تحققي من الاتصال وحاولي مجدداً."
+      : (error.message || "حدث خطأ غير متوقع.");
+    showStatus("فشل الإرسال: " + msg);
   } finally {
+    clearTimeout(timer);
     submitBtn.disabled = false;
     submitBtn.textContent = "إرسال الطلب 💗";
   }
