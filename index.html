@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VELORA | فيلورا</title>
+<style>
+:root{--pink:#f9edf2;--rose:#913f6c;--gold:#c6a46a;--ink:#342832}
+*{box-sizing:border-box}
+body{margin:0;background:#fffafc;color:var(--ink);font-family:Arial,sans-serif}
+header{padding:25px 18px;text-align:center;background:var(--pink);border-bottom:1px solid #ead9e1}
+.logo{font-size:32px;letter-spacing:5px;color:var(--rose);font-weight:bold}
+header p{margin:10px 0 0;color:#765b6b}
+main{max-width:650px;margin:auto;padding:20px 15px}
+.hero{padding:25px 18px;border-radius:20px;background:linear-gradient(135deg,#f8e8ef,#fff9f4);text-align:center}
+h1{font-size:25px;line-height:1.6}
+.gold{color:#a78346}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0}
+.categories div{padding:15px 4px;text-align:center;border:1px solid #eadbe2;border-radius:13px;background:white;font-size:14px}
+h2{font-size:21px;margin-top:27px}
+form{background:white;border:1px solid #f0dfe7;border-radius:20px;padding:18px;box-shadow:0 6px 25px #5b23300a}
+label{display:block;font-weight:bold;margin:17px 0 8px}
+input,textarea,select{width:100%;padding:14px;border:1px solid #e7d9e1;border-radius:12px;font:inherit;background:#f7f2ff;color:#332632}
+textarea{min-height:90px;resize:vertical}
+small{display:block;color:#796875;line-height:1.7;margin-top:7px}
+button{width:100%;padding:17px;margin-top:22px;border:0;border-radius:13px;background:var(--rose);color:white;font-size:18px;font-weight:bold}
+.note{padding:13px;background:#fff2f6;border-radius:12px;line-height:1.8;font-size:14px;margin-top:15px}
+#status{white-space:pre-wrap;overflow-wrap:anywhere}
+footer{text-align:center;padding:25px;color:#816b78;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">VELORA</div>
+  <p>أناقتكِ تبدأ من اختياركِ ✨</p>
+</header>
+<main>
+  <section class="hero">
+    <h1>اختاري ما تحبين،<br><span class="gold">ونبحث لكِ عنه بكل أناقة</span></h1>
+    <p>ملابس • إكسسوارات • أزياء رياضية</p>
+    <p>تقدري تطلبي منتج من الموقع أو تبعثيلنا صورته من هاتفك.</p>
+  </section>
+  <div class="categories">
+    <div>👗<br>ملابس</div>
+    <div>👜<br>إكسسوارات</div>
+    <div>🎀<br>رياضة</div>
+  </div>
+  <h2>🛍️ اطلبي منتجك</h2>
+  <form id="orderForm">
+    <label for="name">الاسم الكامل *</label>
+    <input id="name" name="name" autocomplete="name" required placeholder="اسمك الكامل">
+
+    <label for="phone">رقم الهاتف *</label>
+    <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="05 / 06 / 07">
+
+    <label for="wilaya">الولاية *</label>
+    <input id="wilaya" name="wilaya" required placeholder="مثال: ورقلة">
+
+    <label for="city">البلدية *</label>
+    <input id="city" name="city" required placeholder="اسم البلدية">
+
+    <label for="address">العنوان بالتفصيل *</label>
+    <textarea id="address" name="address" required placeholder="الحي، الشارع، وأي علامة قريبة"></textarea>
+
+    <label for="product">اسم المنتج (اختياري)</label>
+    <input id="product" name="product" placeholder="رابط المنتج أو اسمه إن وجد">
+
+    <label for="photos">صور المنتج 📸 *</label>
+    <input id="photos" name="photos" type="file" accept="image/*" multiple required>
+    <small>اختاري صورة المنتج أو عدة صور من هاتفك. الحد الإجمالي 5 ميغابايت في هذه النسخة.</small>
+
+    <label for="details">المقاس، اللون والكمية</label>
+    <textarea id="details" name="details" placeholder="مثال: اللون الأسود، المقاس M، الكمية 1"></textarea>
+
+    <label for="payment">طريقة الدفع *</label>
+    <select id="payment" name="payment" required>
+      <option value="BaridiMob">بريدي موب (BaridiMob)</option>
+    </select>
+
+    <div class="note">💳 تفاصيل التحويل والتأكيد النهائي للسعر يتم إرسالها بعد مراجعة الطلب والاتفاق مع الزبونة.</div>
+    <button type="submit">إرسال الطلب 💗</button>
+    <div id="status" role="status" aria-live="polite"></div>
+  </form>
+  <div class="note">🔒 لا ترسلي معلومات الدفع السرية أو كلمات المرور. لا ترفعي صور الزبونات أو وثائقهن إلا بموافقتهن.</div>
+</main>
+<footer>VELORA © 2026 — أناقة على ذوقكِ</footer>
+<script>
+document.getElementById('orderForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ const files=[...document.getElementById('photos').files];
+ const total=files.reduce((s,f)=>s+f.size,0);
+ const status=document.getElementById('status');
+ if(!files.length){status.textContent='اختاري صورة واحدة على الأقل للمنتج.';return;}
+ if(total>5*1024*1024){status.textContent='الصور كبيرة. اختاري صوراً مجموعها أقل من 5 ميغابايت.';return;}
+ status.textContent='تم التحقق من المعلومات في هاتفك، لكن الموقع لم يُربط بعد بنظام حفظ الطلبات. لم يتم إرسال الطلب أو الصور. سنكمل إعداد Supabase وTelegram قبل استقبال طلبات حقيقية.';
+});
+</script>
+</body>
+</html>
