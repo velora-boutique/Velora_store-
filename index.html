@@ -104,7 +104,7 @@ button:disabled { opacity: .65; cursor: not-allowed; }
 }
 #preview { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 #preview img { width: 85px; height: 85px; object-fit: cover; border-radius: 10px; }
-.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); opacity: 0; pointer-events: none; }
 footer { text-align: center; padding: 25px; color: #816b78; font-size: 13px; }
 </style>
 </head>
