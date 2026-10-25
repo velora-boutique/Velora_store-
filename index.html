@@ -3,145 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#4a1a3a">
 <title>VELORA | فيلورا</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"></noscript>
 <style>
-:root {
-  --pink: #f9edf2;
-  --rose: #913f6c;
-  --gold: #c6a46a;
-  --ink: #342832;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: #fffafc;
-  color: var(--ink);
-  font-family: "Tajawal", Tahoma, Arial, sans-serif;
-}
-header {
-  padding: 25px 18px;
-  text-align: center;
-  background: var(--pink);
-  border-bottom: 1px solid #ead9e1;
-}
-.logo { font-size: 32px; letter-spacing: 5px; color: var(--rose); font-weight: bold; }
-header p { margin: 10px 0 0; color: #765b6b; }
-main { max-width: 650px; margin: auto; padding: 20px 15px; }
-.hero {
-  padding: 25px 18px;
-  border-radius: 20px;
-  background: linear-gradient(135deg,#f8e8ef,#fff9f4);
-  text-align: center;
-}
-h1 { font-size: 25px; line-height: 1.6; }
-.gold { color: #a78346; }
-.categories { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 20px 0; }
-.categories div {
-  padding: 15px 4px;
-  text-align: center;
-  border: 1px solid #eadbe2;
-  border-radius: 13px;
-  background: white;
-  font-size: 14px;
-}
-h2 { font-size: 21px; margin-top: 27px; }
-form {
-  background: white;
-  border: 1px solid #f0dfe7;
-  border-radius: 20px;
-  padding: 18px;
-  box-shadow: 0 6px 25px #5b23300a;
-}
-label { display: block; font-weight: bold; margin: 17px 0 8px; }
-input, textarea, select {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #e7d9e1;
-  border-radius: 12px;
-  font: inherit;
-  background: #fdf7fa;
-  color: #332632;
-}
-input:focus, textarea:focus, select:focus, button:focus-visible {
-  outline: 2px solid var(--rose);
-  outline-offset: 2px;
-}
-textarea { min-height: 90px; resize: vertical; }
-small { display: block; color: #796875; line-height: 1.7; margin-top: 7px; }
-button {
-  width: 100%;
-  padding: 17px;
-  margin-top: 22px;
-  border: 0;
-  border-radius: 13px;
-  background: var(--rose);
-  color: white;
-  font: inherit;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-}
-button:disabled { opacity: .65; cursor: not-allowed; }
-.note {
-  padding: 13px;
-  background: #fff2f6;
-  border-radius: 12px;
-  line-height: 1.8;
-  font-size: 14px;
-  margin-top: 15px;
-}
-#status {
-  display: none;
-  margin-top: 15px;
-  padding: 12px;
-  border-radius: 10px;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-#preview { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-#preview img { width: 85px; height: 85px; object-fit: cover; border-radius: 10px; }
-.hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); opacity: 0; pointer-events: none; }
-footer { text-align: center; padding: 25px; color: #816b78; font-size: 13px; }
+:root{--plum:#4a1a3a;--rose:#913f6c;--rose2:#b8578a;--gold:#c6a46a;--cream:#fff8f3;--ink:#2e2230;--line:#efdde6}
+*{box-sizing:border-box}
+html,body{overflow-x:hidden}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"Tajawal",Tahoma,Arial,sans-serif;padding-bottom:84px;line-height:1.6}
+.hero{position:relative;overflow:hidden;color:#fff;text-align:center;padding:34px 20px 90px;background:linear-gradient(160deg,#3a1230 0%,#6b2650 55%,#913f6c 100%)}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(198,164,106,.45),transparent 70%)}
+.hero::before{width:260px;height:260px;top:-90px;inset-inline-end:-70px}
+.hero::after{width:220px;height:220px;bottom:-80px;inset-inline-start:-60px;opacity:.7}
+.hero>*{position:relative;z-index:1}
+.logo{font-size:34px;font-weight:800;letter-spacing:9px;color:var(--gold);padding-inline-start:9px}
+.tag{margin:4px 0 0;font-size:13px;letter-spacing:1px;color:#f3dfe9}
+.hero h1{font-size:29px;line-height:1.55;margin:28px 0 12px;font-weight:800}
+.hero h1 span{color:var(--gold)}
+.hero p.sub{margin:0 auto;max-width:430px;color:#f7e9f0;font-size:15.5px}
+.cta{display:inline-block;margin-top:24px;padding:14px 30px;border-radius:50px;background:linear-gradient(135deg,#d9b97c,#c6a46a);color:#3a1230;font-weight:800;font-size:17px;text-decoration:none;box-shadow:0 10px 25px #0004}
+.wrap{max-width:660px;margin:auto;padding:0 16px}
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:-52px;position:relative;z-index:2}
+.cat{background:#fff;border-radius:18px;padding:16px 6px;text-align:center;box-shadow:0 10px 28px #5a214518;border:1px solid var(--line);font-weight:700;font-size:14px}
+.cat i{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 8px;border-radius:50%;background:linear-gradient(135deg,#fbe9f1,#f5dcea);font-style:normal;font-size:22px}
+.sec-title{font-size:22px;font-weight:800;margin:34px 0 14px;text-align:center;color:var(--plum)}
+.sec-title::after{content:"";display:block;width:46px;height:3px;border-radius:3px;background:var(--gold);margin:8px auto 0}
+.steps{display:grid;gap:10px}
+.step{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
+.step b{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--rose);color:#fff;font-size:17px}
+.step span{font-size:15px}
+.trust{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
+.trust span{background:#fff;border:1px solid var(--line);border-radius:50px;padding:7px 14px;font-size:13px;font-weight:500;color:#6a4a5c}
+form{background:#fff;border:1px solid var(--line);border-radius:24px;padding:20px 18px 22px;box-shadow:0 18px 45px #5a21451c}
+label{display:block;font-weight:700;margin:16px 0 7px;font-size:14.5px}
+input,textarea,select{width:100%;padding:14px;border:1.5px solid #ead9e2;border-radius:14px;font:inherit;background:#fdf8fb;color:#2e2230;transition:border-color .2s,box-shadow .2s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 4px #913f6c1f;background:#fff}
+button:focus-visible,.cta:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+textarea{min-height:90px;resize:vertical}
+small{display:block;color:#7a6676;line-height:1.7;margin-top:7px;font-size:12.5px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button#submitBtn{width:100%;padding:17px;margin-top:22px;border:0;border-radius:15px;background:linear-gradient(135deg,var(--rose2),var(--plum));color:#fff;font:inherit;font-size:18px;font-weight:800;cursor:pointer;box-shadow:0 10px 24px #913f6c44}
+button:disabled{opacity:.65;cursor:not-allowed}
+.note{padding:13px;background:#fff3f7;border-radius:14px;line-height:1.8;font-size:13.5px;margin-top:15px;color:#6a4a5c}
+#status{display:none;margin-top:15px;padding:13px;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere;font-weight:500}
+#preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+#preview img{width:80px;height:80px;object-fit:cover;border-radius:12px;border:2px solid #fff;box-shadow:0 3px 10px #0002}
+.hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);opacity:0;pointer-events:none}
+footer{text-align:center;padding:30px 16px 10px;color:#816b78;font-size:13px}
+.sticky{position:fixed;bottom:0;inset-inline:0;z-index:20;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:#fffffff2;border-top:1px solid var(--line);backdrop-filter:blur(8px)}
+.sticky a{display:block;max-width:660px;margin:auto;text-align:center;padding:14px;border-radius:14px;background:linear-gradient(135deg,var(--rose2),var(--plum));color:#fff;font-weight:800;font-size:17px;text-decoration:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
-<header>
+<header class="hero">
   <div class="logo">VELORA</div>
-  <p>أناقتكِ تبدأ من اختياركِ ✨</p>
+  <p class="tag">أناقتكِ تبدأ من اختياركِ ✨</p>
+  <h1>اختاري ما تحبين،<br><span>ونبحث لكِ عنه بكل أناقة</span></h1>
+  <p class="sub">طلبي منتجكِ المفضل من الموقع، أو أرسلي صورته من هاتفكِ ونوصله لباب دارك.</p>
+  <a class="cta" href="#order">اطلبي الآن 💗</a>
 </header>
 
-<main>
-  <section class="hero">
-    <h1>اختاري ما تحبين،<br><span class="gold">ونبحث لكِ عنه بكل أناقة</span></h1>
-    <p>ملابس • إكسسوارات • أزياء رياضية</p>
-    <p>يمكنكِ طلب منتج من الموقع أو إرسال صورته من هاتفكِ.</p>
-  </section>
-
-  <div class="categories">
-    <div>👗<br>ملابس</div>
-    <div>👜<br>إكسسوارات</div>
-    <div>🎀<br>رياضة</div>
+<main class="wrap">
+  <div class="cats">
+    <div class="cat"><i>👗</i>ملابس</div>
+    <div class="cat"><i>👜</i>إكسسوارات</div>
+    <div class="cat"><i>🎀</i>رياضة</div>
   </div>
 
-  <h2>🛍️ اطلبي منتجكِ</h2>
+  <h2 class="sec-title">كيف تطلبين؟</h2>
+  <div class="steps">
+    <div class="step"><b>1</b><span>اكتبي اسم المنتج أو ارفعي صورته</span></div>
+    <div class="step"><b>2</b><span>املئي معلوماتكِ وأرسلي الطلب</span></div>
+    <div class="step"><b>3</b><span>نتواصل معكِ لتأكيد السعر وتفاصيل الدفع</span></div>
+  </div>
+  <div class="trust">
+    <span>✅ تواصل سريع</span><span>📦 توصيل لكل الولايات</span><span>💳 الدفع بريدي موب</span>
+  </div>
+
+  <h2 class="sec-title" id="order">🛍️ اطلبي منتجكِ</h2>
 
   <form id="orderForm" novalidate>
     <label for="name">الاسم الكامل *</label>
     <input id="name" name="name" autocomplete="name" required maxlength="100" placeholder="اسمكِ الكامل">
 
     <label for="phone">رقم الهاتف *</label>
-    <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" required
-           maxlength="10" pattern="0[567][0-9]{8}" placeholder="05 / 06 / 07 xx xx xx xx">
+    <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" required maxlength="10" pattern="0[567][0-9]{8}" placeholder="05 / 06 / 07 xx xx xx xx">
 
-    <label for="wilaya">الولاية *</label>
-    <input id="wilaya" name="wilaya" required maxlength="60" placeholder="مثال: ورقلة">
-
-    <label for="city">البلدية *</label>
-    <input id="city" name="city" required maxlength="60" placeholder="اسم البلدية">
+    <div class="row">
+      <div><label for="wilaya">الولاية *</label>
+      <input id="wilaya" name="wilaya" required maxlength="60" placeholder="مثال: ورقلة"></div>
+      <div><label for="city">البلدية *</label>
+      <input id="city" name="city" required maxlength="60" placeholder="اسم البلدية"></div>
+    </div>
 
     <label for="address">العنوان بالتفصيل *</label>
     <textarea id="address" name="address" required maxlength="300" placeholder="الحي، الشارع، وأي علامة قريبة"></textarea>
@@ -177,6 +133,8 @@ footer { text-align: center; padding: 25px; color: #816b78; font-size: 13px; }
 
 <footer>VELORA © 2026 — أناقة على ذوقكِ</footer>
 
+<div class="sticky"><a href="#order">🛍️ اطلبي الآن</a></div>
+
 <script>
 const FUNCTION_URL = "https://mnwskymgjvuwaijvdqza.supabase.co/functions/v1/rapid-function";
 
@@ -192,6 +150,12 @@ const photoInput = document.getElementById("photos");
 const preview = document.getElementById("preview");
 const statusBox = document.getElementById("status");
 const submitBtn = document.getElementById("submitBtn");
+
+// تعبئة اسم المنتج تلقائياً من الرابط: ?product=اسم المنتج
+try {
+  const p = new URLSearchParams(location.search).get("product");
+  if (p) document.getElementById("product").value = p.slice(0, 500);
+} catch (e) {}
 
 function showStatus(message, success = false) {
   statusBox.style.display = "block";
